@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<%= form_tag posts_path, method: :get, role: 'search' do %>
+  <%= text_field_tag :q, params[:q], placeholder: 'Search Post ...' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <p>
+      <%= link_to "Show this post", post %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New post", new_post_path %>
